@@ -10,3 +10,5 @@ A ještš toto
 Toto přidáno v rámci branch edit-readme2
 
 Toto je přidáno v rámci branch edit-readme3
+
+Toto je přidáno v rámci lokal-zmena-readme 
