@@ -6,3 +6,5 @@ Třetí změna: mažu sufif .md
 
 Tato změne je provedena v lokální repository. 
 A ještš toto
+
+Toto přidáno v rámci branch edit-readme2
