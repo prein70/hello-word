@@ -8,3 +8,5 @@ Tato změne je provedena v lokální repository.
 A ještš toto
 
 Toto přidáno v rámci branch edit-readme2
+
+Toto je přidáno v rámci branch edit-readme3
