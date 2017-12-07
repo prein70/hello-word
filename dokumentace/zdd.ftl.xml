@@ -1,0 +1,64 @@
+<#ftl encoding="utf-8" />
+<#escape x as x?default("")?html>
+<#assign title="vazby-zdd"/>
+<#include "/i-devdoc-header.ftl" />
+
+<p>Přes REST-API je možné provázat zálohový daňový doklad ZDD s platbou bankovního nebo pokladního dokladu uhrazující zálohu.</p>
+
+<pre class="brush: xml">&lt;!-- vytvoření vazby zdd mezi zdd a bankou --&gt;
+&lt;winstrom version="1.0"&gt;
+  &lt;faktura-vydana&gt;
+    &lt;!-- zálohový daňový doklad --&gt;
+    &lt;id&gt;code:VF1-0001/2017&lt;/id&gt;
+    &lt;!-- lze normálně uvést další vlastnosti dokladu jako při běžném importu --&gt;
+    &lt;vytvor-vazbu-zdd&gt;
+      &lt;uhrada type="banka"&gt;code:B+0001/2017&lt;/uhrada&gt;
+    &lt;/vytvor-vazbu-zdd&gt;
+  &lt;/faktura-vydana&gt;
+&lt;/winstrom&gt;</pre>
+
+<pre class="brush: xml">&lt;!-- vytvoření vazby zdd mezi zdd a pokladnou  --&gt;
+&lt;winstrom version="1.0"&gt;
+  &lt;faktura-vydana&gt;
+    &lt;!-- zálohový daňový doklad --&gt;
+    &lt;id&gt;code:VF1-0001/2017&lt;/id&gt;
+    &lt;!-- lze normálně uvést další vlastnosti dokladu jako při běžném importu --&gt;
+    &lt;vytvor-vazbu-zdd&gt;
+      &lt;uhrada type="pokladni-pohyb"&gt;code:P+0001/2017&lt;/uhrada&gt;
+    &lt;/vytvor-vazbu-zdd&gt;
+  &lt;/faktura-vydana&gt;
+&lt;/winstrom&gt;</pre>
+
+<p>Identifikátor platebního dokladu (tag <code>&lt;uhrada&gt;</code>) lze uvést podle <a href="identifiers">obvyklých pravidel</a>. Pokud tento platební doklad není nalezen, import skončí s chybou.</p>
+
+<p>Pokud není uveden typ úhrady (atribut <code>type</code>) má se za to, že typ úhrady je bankovní doklad.</p> 
+
+<pre class="brush: xml">&lt;!-- vytvoření vazby zdd mezi zdd a úhradou bez uvedením typu platby --&gt;
+&lt;winstrom version="1.0"&gt;
+  &lt;faktura-vydana&gt;
+    &lt;!-- zálohový daňový doklad --&gt;
+    &lt;id&gt;code:VF1-0001/2017&lt;/id&gt;
+    &lt;!-- lze normálně uvést další vlastnosti dokladu jako při běžném importu --&gt;
+    &lt;vytvor-vazbu-zdd&gt;
+      &lt;uhrada&gt;code:B+0001/2017&lt;/uhrada&gt;
+    &lt;/vytvor-vazbu-zdd&gt;
+  &lt;/faktura-vydana&gt;
+&lt;/winstrom&gt;</pre>
+
+<p>Jeden ZDD je možné navázat pouze na jednu platbu a na jednu platbu může být navázán pouze jeden ZDD. V případě, že je již ZDD navázán na nějakou paltbu a mělo by dojít k navázání na nějakou jinou, import skončí s chybou. Stejně tak v případě, že je již platba navázána na nějaký ZDD a mělo by dojít k navázání téže platby na nějaký jiný ZDD, import také skončí s chybou.</p>
+
+<p>Přes REST-API je také možné vazbu ZDD zrušit.</p> 
+
+<pre class="brush: xml">&lt;!-- zrušení vazby zdd --&gt;
+&lt;winstrom version="1.0"&gt;
+  &lt;faktura-vydana&gt;
+    &lt;!-- zálohový daňový doklad --&gt;
+    &lt;id&gt;code:VF1-0001/2017&lt;/id&gt;
+    &lt;!-- lze normálně uvést další vlastnosti dokladu jako při běžném importu --&gt;
+    &lt;zrus-vazbu-zdd/&gt;
+  &lt;/faktura-vydana&gt;
+&lt;/winstrom&gt;</pre>
+
+<#include "/i-devdoc-footer.ftl" />
+</#escape>
+
