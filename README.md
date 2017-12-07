@@ -12,3 +12,6 @@ Toto přidáno v rámci branch edit-readme2
 Toto je přidáno v rámci branch edit-readme3
 
 Toto je změna zmena-readme
+
+
+další úprava
