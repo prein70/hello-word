@@ -3,6 +3,8 @@
 <#assign title="vazby-zdd"/>
 <#include "/i-devdoc-header.ftl" />
 
+<p>Malá úprava</p>
+
 <p>Přes REST-API je možné provázat zálohový daňový doklad ZDD s platbou bankovního nebo pokladního dokladu uhrazující zálohu.</p>
 
 <pre class="brush: xml">&lt;!-- vytvoření vazby zdd mezi zdd a bankou --&gt;
